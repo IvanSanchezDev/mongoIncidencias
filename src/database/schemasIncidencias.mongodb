@@ -406,3 +406,21 @@ db.createCollection('incidencias', {
     }
   }
 })
+
+use('db_incidencias_campus')
+db.createCollection('Historial_insidencia_usuarios', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      title: 'Historial_insidencia_usuarios',
+      required: ['usuario_id', 'insidencia_id'],
+      properties: {
+        usuario_id: { bsonType: 'number', description: 'usuario_id is required' },
+        insidencia_id: {
+          bsonType: 'number',
+          description: 'insidencia_id is required'
+        }
+      }
+    }
+  }
+})
