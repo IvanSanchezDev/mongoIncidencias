@@ -132,7 +132,6 @@ db.createCollection('lugares', {
   }
 })
 
-
 use('db_incidencias_campus')
 db.createCollection('areas', {
   validator: {
@@ -152,6 +151,21 @@ db.createCollection('areas', {
           maxLength: 255,
           description: 'description is required'
         }
+      }
+    }
+  }
+})
+
+use('db_incidencias_campus')
+db.createCollection('lugares_areas', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      title: 'lugares_areas',
+      required: ['lugar_id', 'area_id'],
+      properties: {
+        lugar_id: { bsonType: 'number', description: 'lugar_id is required' },
+        area_id: { bsonType: 'number', description: 'area_id is required' }
       }
     }
   }
