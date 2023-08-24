@@ -346,3 +346,22 @@ db.createCollection('insidencia_categoria', {
     }
   }
 })
+
+use('db_incidencias_campus')
+db.createCollection('insidencia_nivel', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      title: 'insidencia_nivel',
+      required: ['id', 'nombre'],
+      properties: {
+        id: { bsonType: 'number', description: 'id is required' },
+        nombre: {
+          bsonType: 'string',
+          maxLength: 150,
+          description: 'nombre is required'
+        }
+      }
+    }
+  }
+})
