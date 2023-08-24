@@ -1,0 +1,26 @@
+use('db_incidencias_campus')
+db.createCollection('tipodocumento', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      title: 'Tipo Documento',
+      required: ['id', 'nombre', 'abreviacion'],
+      properties: {
+        id: {
+          bsonType: 'number',
+          description: 'Id of tipo document'
+        },
+        nombre: {
+          bsonType: 'string',
+          maxLength: 150,
+          description: 'Nombre de tipo document'
+        },
+        abreviacion: {
+          bsonType: 'string',
+          maxLength: 50,
+          description: 'abreviacion de tipo document'
+        }
+      }
+    }
+  }
+})
