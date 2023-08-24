@@ -322,3 +322,27 @@ db.createCollection('equipos_acc_lugar', {
     }
   }
 })
+
+use('db_incidencias_campus')
+db.createCollection('insidencia_categoria', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      title: 'insidencia_categoria',
+      required: ['id', 'nombre', 'descripcion'],
+      properties: {
+        id: { bsonType: 'number', description: 'id is required' },
+        nombre: {
+          bsonType: 'string',
+          maxLength: 150,
+          description: 'nombre is required'
+        },
+        descripcion: {
+          bsonType: 'string',
+          maxLength: 255,
+          description: 'descripcion is required'
+        }
+      }
+    }
+  }
+})
