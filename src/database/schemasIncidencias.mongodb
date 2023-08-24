@@ -324,7 +324,7 @@ db.createCollection('equipos_acc_lugar', {
 })
 
 use('db_incidencias_campus')
-db.createCollection('insidencia_categoria', {
+db.createCollection('incidencia_categoria', {
   validator: {
     $jsonSchema: {
       bsonType: 'object',
@@ -348,7 +348,7 @@ db.createCollection('insidencia_categoria', {
 })
 
 use('db_incidencias_campus')
-db.createCollection('insidencia_nivel', {
+db.createCollection('incidencia_nivel', {
   validator: {
     $jsonSchema: {
       bsonType: 'object',
@@ -408,7 +408,7 @@ db.createCollection('incidencias', {
 })
 
 use('db_incidencias_campus')
-db.createCollection('Historial_insidencia_usuarios', {
+db.createCollection('Historial_incidencia_usuarios', {
   validator: {
     $jsonSchema: {
       bsonType: 'object',
@@ -424,3 +424,281 @@ db.createCollection('Historial_insidencia_usuarios', {
     }
   }
 })
+
+use('db_incidencias_campus')
+
+db.incidencia_nivel.insertMany([
+  { id: 1, nombre: 'level' },
+  { id: 2, nombre: 'moderada' },
+  { id: 3, nombre: 'critica' }
+])
+
+use('db_incidencias_campus')
+db.incidencia_categoria.insertMany([
+  {
+    id: 1,
+    nombre: 'software',
+    descripcion: 'Todo lo relacionado con los dispositivos externos'
+  },
+  {
+    id: 2,
+    nombre: 'hardware',
+    descripcion: 'todo lo relacionado con la parte interna, es decir, sistema operativo, programas'
+  }
+])
+
+use('db_incidencias_campus')
+
+db.tipodocumento.insertMany([
+  { id: 1, nombre: 'Cedula de ciudadania', abreviacion: 'CC' },
+  { id: 2, nombre: 'Tarjeta de identidad', abreviacion: 'TI' },
+  { id: 3, nombre: 'Pasaporte', abreviacion: 'PS' },
+  { id: 4, nombre: 'Cedula de Extranjera', abreviacion: 'CE' }
+])
+
+use('db_incidencias_campus')
+
+db.lugares.insertMany([
+  { id: 1, nombre: 'Apolo', description: 'Salon de clase principiantes' },
+  { id: 2, nombre: 'Artemis', description: 'Salon de clase intermedios' },
+  { id: 3, nombre: 'Sputnik', description: 'Salon de clase Avanzados' },
+  {
+    id: 4,
+    nombre: 'skylab',
+    description: 'Area de aprendizaje autonomo'
+  },
+  {
+    id: 5,
+    nombre: 'corvus',
+    description: 'Area de aprendizaje autonomo'
+  },
+  {
+    id: 6,
+    nombre: 'endor',
+    description: 'Area de aprendizaje autonomo'
+  }
+])
+
+use('db_incidencias_campus')
+db.areas.insertMany([
+  {
+    id: 1,
+    nombre: 'training',
+    description:
+      'Salones de clases, son el area donde los trainer pueden dar clases'
+  },
+  {
+    id: 2,
+    nombre: 'review_1',
+    description: 'Salones para el aprendiza autonomo'
+  },
+  {
+    id: 3,
+    nombre: 'review_2',
+    description: 'Salones para el aprendiza autonomo'
+  }
+])
+
+use('db_incidencias_campus')
+db.lugares_areas.insertMany([
+  { id: 1, lugar_id: 1, area_id: 1 },
+  { id: 2, lugar_id: 2, area_id: 1 },
+  { id: 3, lugar_id: 3, area_id: 1 },
+  { id: 4, lugar_id: 4, area_id: 1 },
+  { id: 5, lugar_id: 5, area_id: 2 },
+  { id: 6, lugar_id: 6, area_id: 3 }
+])
+
+use('db_incidencias_campus')
+
+db.accesorio_mouse.insertMany([
+  { id: 1, marca: 'Logitech', description: 'Mouse Logitech', serial: '123456' },
+  {
+    id: 2,
+    marca: 'Logitech',
+    description: 'Mouse Logitech',
+    serial: '123asdw'
+  },
+  { id: 3, marca: 'Acer', description: 'Mouse Acer', serial: '123cw23' },
+  { id: 4, marca: 'Compumax', description: 'Mouse Compumax', serial: '12we56' }
+])
+
+use('db_incidencias_campus')
+
+db.accesorio_teclado.insertMany([
+  {
+    id: 1,
+    marca: 'Logitech',
+    description: 'Teclado Logitech',
+    serial: '124426'
+  },
+  {
+    id: 2,
+    marca: 'Logitech',
+    description: 'Teclado Logitech',
+    serial: '123as4w'
+  },
+  { id: 3, marca: 'Acer', description: 'Teclado Acer', serial: '123cqww3' },
+  {
+    id: 4,
+    marca: 'Compumax',
+    description: 'Teclado Compumax',
+    serial: 'eq2123'
+  }
+])
+
+use('db_incidencias_campus')
+
+db.accesorio_diademas.insertMany([
+  {
+    id: 1,
+    marca: 'Logitech',
+    description: 'Diademas Logitech'
+  },
+  {
+    id: 2,
+    marca: 'Logitech',
+    description: 'Diademas Logitech',
+    serial: '123as4w'
+  },
+  { id: 3, marca: 'Acer', description: 'Diademas Acer' },
+  {
+    id: 4,
+    marca: 'Compumax',
+    description: 'Diademas Compumax'
+  }
+])
+
+use('db_incidencias_campus')
+
+db.equipos.insertMany([
+  {
+    id: 1,
+    nombre: 'J-50',
+    description: 'Equipo en perfecto estado',
+    lugar_id: 1
+  },
+  {
+    id: 2,
+    nombre: 'J-32',
+    description: 'Equipo en perfecto estado',
+    lugar_id: 1
+  },
+  {
+    id: 3,
+    nombre: 'J-44',
+    description: 'Equipo en perfecto estado',
+    lugar_id: 2
+  },
+  {
+    id: 4,
+    nombre: 'J-15',
+    description: 'Equipo en perfecto estado',
+    lugar_id: 2
+  }
+])
+
+use('db_incidencias_campus')
+
+db.equipos_acc_lugar.insertMany([
+  {
+    id: 1,
+    equipos_id: 1,
+    accesorios_mouse_id: 1,
+    accesorios_teclado_id: 1,
+    accesorios_diademas_id: 1
+  },
+  {
+    id: 2,
+    equipos_id: 2,
+    accesorios_mouse_id: 2,
+    accesorios_teclado_id: 2,
+    accesorios_diademas_id: 2
+  },
+  {
+    id: 3,
+    equipos_id: 3,
+    accesorios_mouse_id: 3,
+    accesorios_teclado_id: 3,
+    accesorios_diademas_id: 3
+  },
+  {
+    id: 4,
+    equipos_id: 4,
+    accesorios_mouse_id: 4,
+    accesorios_teclado_id: 4,
+    accesorios_diademas_id: 4
+  }
+])
+
+use('db_incidencias_campus')
+db.infoempresarial.insertMany([
+  {
+    id: 1,
+    emailCoor: 'vermen@campuslands.com',
+    telFijoCoor: '6785868',
+    telMovCoor: '+579317458962'
+  }
+])
+
+use('db_incidencias_campus')
+db.usuarios.insertMany([
+  {
+    id: 1,
+    nombre: 'juan',
+    apellidos: 'sanchez',
+    password: '12345',
+    doc_usuario: 12324,
+    tipoDocumento_id: 1,
+    infoEmpresarial_id: 1,
+    telefono: '+1658742',
+    movile: '+5734158924',
+    email: 'devjgi@gmail.com'
+  },
+  {
+    id: 2,
+    nombre: 'David',
+    apellidos: 'sanchez',
+    password: '12345',
+    doc_usuario: 12324,
+    tipoDocumento_id: 1,
+    infoEmpresarial_id: 1,
+    telefono: '+1658742',
+    movile: '+5734158924',
+    email: 'devjgi@gmail.com'
+  }
+])
+
+use('db_incidencias_campus')
+db.usuarios_lugares.insertMany([{ id: 1, lugares_id: 1, usuarios_id: 1 }])
+
+use('db_incidencias_campus')
+db.incidencias.insertMany([
+  {
+    id: 1,
+    nombre: 'No enciende',
+    descripcion:
+      'El camper Juan, intento prender el pc y no le funciona, hace la notificacion y se comprueba la incidencia',
+    equipo_id: 1,
+    lugar_id: 1,
+    fecha: new Date('2023-07-15'),
+    nivel_id: 3,
+    categoria_id: 1
+  },
+  {
+    id: 2,
+    nombre: 'Falta mouse',
+    descripcion:
+      'El camper David, reporta falta de mouse',
+    equipo_id: 2,
+    lugar_id: 1,
+    fecha: new Date('2023-07-15'),
+    nivel_id: 2,
+    categoria_id: 2
+  }
+])
+
+use('db_incidencias_campus')
+db.historial_incidencia_usuarios.insertMany([
+  { id: 1, usuario_id: 1, insidencia_id: 1 }, { id: 2, usuario_id: 2, insidencia_id: 2 }
+])
