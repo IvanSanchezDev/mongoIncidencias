@@ -170,3 +170,24 @@ db.createCollection('lugares_areas', {
     }
   }
 })
+
+use('db_incidencias_campus')
+db.createCollection('usuarios_lugares', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      title: 'usuarios_lugares',
+      required: ['lugares_id', 'usuarios_id'],
+      properties: {
+        lugares_id: {
+          bsonType: 'number',
+          description: 'lugares_id is required'
+        },
+        usuarios_id: {
+          bsonType: 'number',
+          description: 'usuarios_id is required'
+        }
+      }
+    }
+  }
+})
