@@ -216,3 +216,27 @@ db.createCollection('equipos', {
     }
   }
 })
+
+use('db_incidencias_campus')
+db.createCollection('accesorio_teclado', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      title: 'accesorio_teclado',
+      required: ['id', 'marca', 'description'],
+      properties: {
+        id: { bsonType: 'number', description: 'id is required' },
+        marca: {
+          bsonType: 'string',
+          maxLength: 150,
+          description: 'marca is required'
+        },
+        description: {
+          bsonType: 'string',
+          maxLength: 255,
+          description: 'description is required'
+        }
+      }
+    }
+  }
+})
