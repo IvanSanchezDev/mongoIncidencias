@@ -107,3 +107,27 @@ db.createCollection('usuarios', {
     }
   }
 })
+
+use('db_incidencias_campus')
+db.createCollection('lugares', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      title: 'Lugares',
+      required: ['id', 'nombre', 'description'],
+      properties: {
+        id: { bsonType: 'number', description: 'id is requiered' },
+        nombre: {
+          bsonType: 'string',
+          maxLength: 150,
+          description: 'nombre is requiered'
+        },
+        description: {
+          bsonType: 'string',
+          maxLength: 255,
+          description: 'description is requiered'
+        }
+      }
+    }
+  }
+})
