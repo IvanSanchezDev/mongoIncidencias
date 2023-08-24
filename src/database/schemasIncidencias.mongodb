@@ -365,3 +365,44 @@ db.createCollection('insidencia_nivel', {
     }
   }
 })
+
+use('db_incidencias_campus')
+db.createCollection('incidencias', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      title: 'insidencias',
+      required: [
+        'id',
+        'nombre',
+        'descripcion',
+        'equipo_id',
+        'lugar_id',
+        'fecha',
+        'nivel_id',
+        'categoria_id'
+      ],
+      properties: {
+        id: { bsonType: 'number', description: 'id is required' },
+        nombre: {
+          bsonType: 'string',
+          maxLength: 150,
+          description: 'nombre is required'
+        },
+        descripcion: {
+          bsonType: 'string',
+          maxLength: 255,
+          description: 'descripcion is required'
+        },
+        equipo_id: { bsonType: 'number', description: 'equipo_id is required' },
+        lugar_id: { bsonType: 'number', description: 'lugar_id is required' },
+        fecha: { bsonType: 'date', description: 'fecha is required' },
+        nivel_id: { bsonType: 'number', description: 'nivel_id is required' },
+        categoria_id: {
+          bsonType: 'number',
+          description: 'categoria_id is required'
+        }
+      }
+    }
+  }
+})
