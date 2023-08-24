@@ -57,3 +57,53 @@ db.createCollection('infoEmpresarial', {
     }
   }
 })
+
+use('db_incidencias_campus')
+db.createCollection('usuarios', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      title: 'usuarios',
+      required: [
+        'id',
+        'nombre',
+        'apellidos',
+        'password',
+        'doc_usuario',
+        'tipoDocumento_id',
+        'infoEmpresarial_id'
+      ],
+      properties: {
+        id: { bsonType: 'number', description: 'id of the user' },
+        nombre: {
+          bsonType: 'string',
+          maxLength: 150,
+          description: 'nombre of the user'
+        },
+        apellidos: {
+          bsonType: 'string',
+          maxLength: 150,
+          description: ' acellidos of the user'
+        },
+        password: {
+          bsonType: 'string',
+          maxLength: 150,
+          description: 'password of the user'
+        },
+        doc_usuario: {
+          bsonType: 'number',
+          description: 'id of the docusuario'
+        },
+        tipoDocumento_id: {
+          bsonType: 'number',
+          description: 'id of the tipo document'
+        },
+        infoEmpresarial_id: {
+          bsonType: 'number',
+          description: 'id of the info'
+        }
+      }
+
+    }
+  }
+})
