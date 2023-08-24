@@ -24,3 +24,36 @@ db.createCollection('tipodocumento', {
     }
   }
 })
+
+use('db_incidencias_campus')
+db.createCollection('infoEmpresarial', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      title: 'Info Empresarial',
+      required: ['id', 'emailCoor', 'telFijoCoor', 'telMovCoor'],
+      properties: {
+        id: {
+          bsonType: 'number',
+          description: 'Id del tipo document'
+        },
+        emailCoor: {
+          bsonType: 'string',
+          maxLength: 150,
+          description: 'Email del tipo document'
+        },
+        telFijoCoor: {
+          bsonType: 'string',
+          maxLength: 150,
+          description: 'Tel de tipo document'
+        },
+        telMovCoor: {
+          bsonType: 'string',
+          maxLength: 150,
+          description: 'Tel de tipo document'
+        }
+      }
+
+    }
+  }
+})
