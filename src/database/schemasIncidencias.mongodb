@@ -288,3 +288,37 @@ db.createCollection('accesorio_diademas', {
     }
   }
 })
+
+use('db_incidencias_campus')
+db.createCollection('equipos_acc_lugar', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      title: 'equipos_acc_lugar',
+      required: [
+        'equipos_id',
+        'accesorios_mouse_id',
+        'accesorios_teclado_id',
+        'accesorios_diademas_id'
+      ],
+      properties: {
+        equipos_id: {
+          bsonType: 'number',
+          description: 'equipos_id is required'
+        },
+        accesorios_mouse_id: {
+          bsonType: 'int',
+          description: 'accesorios_mouse_id is required'
+        },
+        accesorios_teclado_id: {
+          bsonType: 'number',
+          description: 'accesorios_teclado_id is required'
+        },
+        accesorios_diademas_id: {
+          bsonType: 'number',
+          description: 'accesorios_diademas_id is required'
+        }
+      }
+    }
+  }
+})
